@@ -27,6 +27,15 @@ import { test, Browser, Page, expect } from '@playwright/test';
 
         await test.step(`Soy redirigido a la sección de título "${seccion.tituloEsperado}"`, async () => {
           await expect(page).toHaveTitle(seccion.tituloEsperado);
+
+          page.getByText('banana').click();
+
+          page
+            .getByRole('listitem')
+            .filter({ hasText: 'banana' }).click();
+
+          page.getByRole('listitem').last();
+
         });
       });
     }
