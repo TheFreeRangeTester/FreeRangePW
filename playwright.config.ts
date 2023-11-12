@@ -26,7 +26,7 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://thefreerangetester.github.io/sandbox-automation-testing/',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on',
+    trace: 'retain-on-failure',
     video: 'retain-on-failure',
   },
 
