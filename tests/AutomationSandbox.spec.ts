@@ -1,4 +1,5 @@
 import { test, Browser, Page, expect } from '@playwright/test';
+import { SandboxPage } from './Pages/SandboxPage';
 
 (async () => {
     let browser: Browser;
@@ -35,22 +36,24 @@ import { test, Browser, Page, expect } from '@playwright/test';
         })
 
         test('Puedo seleccionar y deseleccionar un checkbox en el @Sandbox', async ({ page }) => {
+
             await test.step('Dado que navego al Sandbox de Automation de Free Range Testers', async () => {
                 await page.goto('');
             })
             await test.step('Puedo seleccionar el checkbox para Pasta', async () => {
+                const sandbox = new SandboxPage(page);
+                //await page.getByLabel('Pasta 🍝').check();
+                await sandbox.checkPasta();
 
-                await page.getByLabel('Pasta 🍝').check();
-                await expect(page.getByLabel('Pasta 🍝'), 'El checkbox no estaba seleccionado').toBeChecked();
+                await expect(sandbox.pastaCheckbox, 'El checkbox no estaba seleccionado').toBeChecked();
 
             })
 
             await test.step('Puedo deseleccionar el checkbox Pasta', async () => {
                 await page.getByLabel('Pasta 🍝').uncheck();
-                await expect(page.getByLabel('Pasta 🍝')).not.toBeChecked();
+
+                await expect(page.getByLabel('Pasta 🍝'), 'El checkbox no estaba seleccionado').not.toBeChecked();
             })
-
-
 
         })
 
@@ -202,8 +205,24 @@ import { test, Browser, Page, expect } from '@playwright/test';
 
         })
 
+        test('Validando dentro de un popup', async ({ page }) => {
+            await test.step('Dado que navego al sandbox', async () => {
+                await page.goto('');
+            })
+
+            await test.step('Cuando hago click en el botón popup', async () => {
+                await page.getByRole('button', { name: 'Mostrar popup' }).click();
+            })
+
+            await test.step('Puedo validar un elemento dentro del popup', async () => {
+                await expect(page.getByText('¿Viste? ¡Apareció un Pop-up!')).toHaveText('¿Viste? ¡Apareció un Pop-up!');
+                await page.getByRole('button', { name: 'Cerrar' }).click();
+
+            })
+
+
+        })
 
     })
-
 
 })();

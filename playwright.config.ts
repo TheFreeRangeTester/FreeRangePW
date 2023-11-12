@@ -27,26 +27,38 @@ export default defineConfig({
     baseURL: 'https://thefreerangetester.github.io/sandbox-automation-testing/',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'Computadora',
-      testMatch: "/AutomationSandbox.spec.ts",
+      testMatch: "/*.spec.ts",
       use: { ...devices['Desktop Chrome'] },
     },
 
     {
       name: 'Iphone',
-      testMatch: "/AutomationSandbox.spec.ts",
+      testMatch: "/*.spec.ts",
       use: { ...devices['iPhone 12'] },
     },
 
     {
       name: 'iPad',
-      testMatch: "/AutomationSandbox.spec.ts",
+      testMatch: "/*.spec.ts",
       use: { ...devices['iPad (gen 7)'] },
+    },
+    {
+      name: 'API Tests',
+      testMatch: 'APITests/**/*',
+      use: {
+        baseURL: 'https://api.github.com',
+        extraHTTPHeaders: {
+          'Accept': 'application/vnd.github.v3+json',
+          'Authorization': `token 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`,
+        }
+      }
     },
 
     /* Test against mobile viewports. */
