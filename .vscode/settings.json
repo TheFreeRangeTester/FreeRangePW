@@ -1,0 +1,8 @@
+{
+    "yaml.schemas": {
+        "https://www.artillery.io/schema.json": [
+            "file:///Users/patominer/Documents/Proyectos/FreeRangePW/test-artillery.yml",
+            "file:///Users/patominer/Documents/Proyectos/FreeRangePW/asciiart-load-test.yml"
+        ]
+    }
+}
