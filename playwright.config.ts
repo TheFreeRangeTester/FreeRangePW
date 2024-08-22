@@ -33,7 +33,7 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'Computadora',
+      name: 'Computer',
       testMatch: "/*.spec.ts",
       use: { ...devices['Desktop Chrome'] },
     },

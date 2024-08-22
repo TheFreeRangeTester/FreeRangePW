@@ -1,5 +1,5 @@
 import { test, Browser, Page, expect } from '@playwright/test';
-import { SandboxPage } from './Pages/SandboxPage';
+import { SandboxPage } from '../Pages/SandboxPage';
 
 (async () => {
     let browser: Browser;
@@ -87,7 +87,7 @@ import { SandboxPage } from './Pages/SandboxPage';
                 await page.goto('https://thefreerangetester.github.io/sandbox-automation-testing/');
             })
             await test.step('Valido que la lista del dropdown contiene los deportes esperados', async () => {
-                const deportes = ['Fútbol', 'Tennis', 'Basketball']
+                const deportes = ['Fútbol', 'Tennis', 'Basketball', 'Bochas']
 
                 for (let opcion of deportes) {
                     const element = await page.$(`select#formBasicSelect > option:is(:text("${opcion}"))`);

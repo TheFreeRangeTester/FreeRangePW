@@ -7,7 +7,6 @@ test.describe('Navegación en www.freerangetesters.com', () => {
     { nombre: 'Recursos', url: '/recursos', tituloEsperado: 'Recursos' },
     { nombre: 'Mentorías', url: '/mentoria-1-1-con-pato', tituloEsperado: 'Mentoría personalizada de avance de carrera para testers de software' },
     { nombre: 'Blog', url: '/blog', tituloEsperado: 'Free Range Testers' }
-    // Otros elementos de la matriz aquí...
   ];
 
   for (const seccion of secciones) {

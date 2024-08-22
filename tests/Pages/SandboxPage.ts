@@ -1,6 +1,4 @@
 import { expect, type Locator, type Page } from '@playwright/test';
-
-
 export class SandboxPage {
     readonly page: Page;
     readonly pastaCheckbox: Locator;
